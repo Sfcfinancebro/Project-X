@@ -103,6 +103,50 @@
             background: rgba(59, 130, 246, 0.15);
         }
         
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%),
+                        url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+            border-radius: 0 0 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-blue);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 1.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+        
         /* Card Styling */
         .card {
             background: var(--card-bg);
@@ -192,6 +236,20 @@
         .stat-icon.transactions {
             background: rgba(245, 158, 11, 0.2);
             color: var(--warning-color);
+        }
+        
+        /* Feature Icons */
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: white;
+            margin-bottom: 1rem;
         }
         
         /* Button Styling */
@@ -393,6 +451,10 @@
                 padding: 0.5rem 1rem;
                 font-size: 0.9rem;
             }
+            
+            .hero-section {
+                padding: 2rem 0;
+            }
         }
         
         /* Loading Animation */
@@ -453,20 +515,31 @@
     <main class="container mt-4">
         <!-- Dashboard -->
         <div id="dashboard" class="fade-in-up">
-            <div class="row">
-                <div class="col-12 mb-4">
-                    <div class="card glass-effect">
-                        <div class="card-body text-center">
-                            <h1 class="card-title text-gradient mb-3">
-                                <i class="fas fa-chart-line me-3"></i>
-                                Financial Dashboard Pro
-                            </h1>
-                            <p class="card-text text-secondary">Advanced financial tracking with real-time analytics</p>
-                        </div>
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-content text-center">
+                    <div class="hero-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h1 class="display-4 fw-bold mb-3">
+                        Financial Dashboard Pro
+                    </h1>
+                    <p class="lead text-secondary mb-4">
+                        Advanced financial tracking with real-time analytics and professional insights
+                    </p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button class="btn btn-success btn-lg" onclick="showAddIncome()">
+                            <i class="fas fa-plus-circle me-2"></i>Add Income
+                        </button>
+                        <button class="btn btn-danger btn-lg" onclick="showAddExpense()">
+                            <i class="fas fa-minus-circle me-2"></i>Add Expense
+                        </button>
                     </div>
                 </div>
+            </div>
 
-                <!-- Financial Summary Cards -->
+            <!-- Financial Summary Cards -->
+            <div class="row mb-4">
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="stat-card income">
                         <div class="stat-icon income">
@@ -520,29 +593,45 @@
                 </div>
             </div>
 
-            <!-- Quick Actions -->
+            <!-- Features Section -->
             <div class="row mb-4">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title mb-0">
-                                <i class="fas fa-bolt me-2"></i>
-                                Quick Actions
+                                <i class="fas fa-star me-2"></i>
+                                Key Features
                             </h5>
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <button class="btn btn-success w-100" onclick="showAddIncome()">
-                                        <i class="fas fa-plus-circle me-2"></i>
-                                        Add Income
-                                    </button>
+                                <div class="col-md-3 mb-3 text-center">
+                                    <div class="feature-icon mx-auto">
+                                        <i class="fas fa-chart-pie"></i>
+                                    </div>
+                                    <h6 class="fw-bold">Analytics</h6>
+                                    <p class="text-muted small">Advanced financial insights</p>
                                 </div>
-                                <div class="col-md-6 mb-3">
-                                    <button class="btn btn-danger w-100" onclick="showAddExpense()">
-                                        <i class="fas fa-minus-circle me-2"></i>
-                                        Add Expense
-                                    </button>
+                                <div class="col-md-3 mb-3 text-center">
+                                    <div class="feature-icon mx-auto">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <h6 class="fw-bold">Secure</h6>
+                                    <p class="text-muted small">Your data is protected</p>
+                                </div>
+                                <div class="col-md-3 mb-3 text-center">
+                                    <div class="feature-icon mx-auto">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </div>
+                                    <h6 class="fw-bold">Mobile</h6>
+                                    <p class="text-muted small">Works on all devices</p>
+                                </div>
+                                <div class="col-md-3 mb-3 text-center">
+                                    <div class="feature-icon mx-auto">
+                                        <i class="fas fa-sync-alt"></i>
+                                    </div>
+                                    <h6 class="fw-bold">Real-time</h6>
+                                    <p class="text-muted small">Instant updates</p>
                                 </div>
                             </div>
                         </div>
