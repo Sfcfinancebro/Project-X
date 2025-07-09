@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Finance Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1><i class="fas fa-coins"></i> Advanced Finance Tracker</h1>
+            <p>Track your income, expenses, and financial goals with ease!</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Add Transaction Section -->
+            <section class="transaction-section">
+                <h2><i class="fas fa-plus-circle"></i> Add Transaction</h2>
+                <form id="transactionForm" class="transaction-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="transactionType">Transaction Type</label>
+                            <select id="transactionType" required>
+                                <option value="">Select Type</option>
+                                <option value="income">💰 Income</option>
+                                <option value="expense">💸 Expense</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount ($)</label>
+                            <input type="number" id="amount" step="0.01" placeholder="0.00" required>
+                            <small>💡 You can enter negative amounts for refunds/adjustments</small>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select id="category" required>
+                                <option value="">Select Category</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="sourceGroup" style="display: none;">
+                            <label for="source">Source</label>
+                            <input type="text" id="source" placeholder="e.g., Salary, Freelance">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description (Optional)</label>
+                        <input type="text" id="description" placeholder="Brief description of the transaction">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Add Transaction
+                    </button>
+                </form>
+            </section>
+
+            <!-- Summary Cards -->
+            <section class="summary-section">
+                <div class="summary-cards">
+                    <div class="summary-card income">
+                        <div class="card-icon">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Total Income</h3>
+                            <p id="totalIncome">$0.00</p>
+                        </div>
+                    </div>
+                    <div class="summary-card expense">
+                        <div class="card-icon">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Total Expenses</h3>
+                            <p id="totalExpenses">$0.00</p>
+                        </div>
+                    </div>
+                    <div class="summary-card balance">
+                        <div class="card-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Net Balance</h3>
+                            <p id="netBalance">$0.00</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Budget Management -->
+            <section class="budget-section">
+                <h2><i class="fas fa-chart-pie"></i> Budget Management</h2>
+                <div class="budget-controls">
+                    <div class="budget-form">
+                        <input type="text" id="budgetCategory" placeholder="Category name">
+                        <input type="number" id="budgetAmount" step="0.01" placeholder="Monthly budget">
+                        <button id="setBudget" class="btn btn-secondary">
+                            <i class="fas fa-plus"></i> Set Budget
+                        </button>
+                    </div>
+                </div>
+                <div id="budgetList" class="budget-list"></div>
+            </section>
+
+            <!-- Transaction History -->
+            <section class="history-section">
+                <h2><i class="fas fa-history"></i> Transaction History</h2>
+                <div class="filter-controls">
+                    <select id="filterType">
+                        <option value="all">All Transactions</option>
+                        <option value="income">Income Only</option>
+                        <option value="expense">Expenses Only</option>
+                    </select>
+                    <select id="filterCategory">
+                        <option value="all">All Categories</option>
+                    </select>
+                    <button id="clearFilters" class="btn btn-outline">
+                        <i class="fas fa-times"></i> Clear Filters
+                    </button>
+                </div>
+                <div id="transactionList" class="transaction-list"></div>
+            </section>
+
+            <!-- Analytics -->
+            <section class="analytics-section">
+                <h2><i class="fas fa-chart-bar"></i> Analytics</h2>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Category Breakdown</h3>
+                        <div id="categoryChart" class="chart-container"></div>
+                    </div>
+                    <div class="analytics-card">
+                        <h3>Monthly Trends</h3>
+                        <div id="trendChart" class="chart-container"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Success/Error Messages -->
+    <div id="messageContainer" class="message-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
